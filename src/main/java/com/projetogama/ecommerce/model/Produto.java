@@ -7,8 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@Table(name="produto")
 public class Produto {
 	
 	@Column(name="codigo") 
@@ -33,6 +37,7 @@ public class Produto {
 	
 	@ManyToOne
 	@JoinColumn(name="departamento_codigo")
+	@JsonIgnoreProperties("listaProdutos")
 	private Departamento departamento;
 
 	public Integer getCodigo() {
