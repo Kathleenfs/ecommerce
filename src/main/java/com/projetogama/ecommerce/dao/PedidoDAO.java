@@ -7,3 +7,4 @@ import com.projetogama.ecommerce.model.Pedido;
 public interface PedidoDAO extends CrudRepository<Pedido, Integer> {
 
 }
+
