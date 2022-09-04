@@ -1,17 +1,21 @@
 package com.projetogama.ecommerce.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import java.time.LocalDate;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-
+@Table(name = "pedido")
 public class Pedido {
 
 	@Id
@@ -33,6 +37,19 @@ public class Pedido {
 
 	@Column(name = "status")
 	private Integer status;
+	
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("pedido")
+	private List<ItemPedido> itens;
+	
+
+	public List<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<ItemPedido> itens) {
+		this.itens = itens;
+	}
 
 	public Integer getNumero() {
 		return numero;
