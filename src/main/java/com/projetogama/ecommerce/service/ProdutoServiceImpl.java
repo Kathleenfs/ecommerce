@@ -9,7 +9,6 @@ import com.projetogama.ecommerce.dao.ProdutoDAO;
 import com.projetogama.ecommerce.model.Produto;
 
 @Service
-
 public class ProdutoServiceImpl  implements IProdutoService{
 	
 	@Autowired
@@ -18,6 +17,9 @@ public class ProdutoServiceImpl  implements IProdutoService{
 	public ArrayList<Produto> recuperarTodos() {
 		
 		return (ArrayList<Produto>)dao.findAll();
+		//return dao.findByOrderNomeContaining("Console");
+		//return dao.findByOrderPreco();
+		//return dao.findByOrderPrecoDesc();
 	}
 
 	@Override
@@ -31,4 +33,9 @@ public class ProdutoServiceImpl  implements IProdutoService{
 		return dao.save(novo);
 	}
 
+	@Override
+	public ArrayList<Produto> buscarPorPalavraChave(String palavra) {
+		
+		return dao.findByOrderNomeContaining(palavra);
+	}
 }

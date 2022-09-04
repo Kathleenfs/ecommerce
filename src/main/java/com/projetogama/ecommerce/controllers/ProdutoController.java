@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projetogama.ecommerce.model.Produto;
@@ -33,8 +34,12 @@ public class ProdutoController {
 		return ResponseEntity.status(404).build(); // utiliza-se build pq não tem corpo para ser exibido
 	}
 
+	//recuperar por palavra chave
+	public ArrayList<Produto> recuperarPorPalavra(@RequestParam(name="palavra") String palavra){
+		return service.buscarPorPalavraChave(palavra);
+	}
+	
 	// CADASTRAR
-
 	@PostMapping("/produtos")
 	public ResponseEntity<Produto> inserirNovoProduto(@RequestBody Produto novo) {
 		Produto res = service.cadastrarNovo(novo);
