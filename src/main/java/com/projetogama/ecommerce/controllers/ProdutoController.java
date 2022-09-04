@@ -15,30 +15,30 @@ import com.projetogama.ecommerce.service.IProdutoService;
 
 @RestController
 public class ProdutoController {
-	
+
 	@Autowired
 	private IProdutoService service;
-	
+
 	@GetMapping("/produtos")
-	public ArrayList<Produto> recuperartodoMundo(){
+	public ArrayList<Produto> recuperartodoMundo() {
 		return service.recuperarTodos();
-		}
-	
+	}
+
 	@GetMapping("/produto/{codigo}")
-	public ResponseEntity<Produto> recuperarPeloCodigo(@PathVariable Integer codigo){
+	public ResponseEntity<Produto> recuperarPeloCodigo(@PathVariable Integer codigo) {
 		Produto res = service.recuperarPeloCodigo(codigo);
-		if(res != null) {
+		if (res != null) {
 			return ResponseEntity.ok(res);
 		}
-		return ResponseEntity.status(404).build(); //utiliza-se build pq não tem corpo para ser exibido
+		return ResponseEntity.status(404).build(); // utiliza-se build pq não tem corpo para ser exibido
 	}
-	
-	//CADASTRAR
-	
+
+	// CADASTRAR
+
 	@PostMapping("/produtos")
-	public ResponseEntity<Produto> inserirNovoProduto(@RequestBody Produto novo){
+	public ResponseEntity<Produto> inserirNovoProduto(@RequestBody Produto novo) {
 		Produto res = service.cadastrarNovo(novo);
-		if(res != null) {
+		if (res != null) {
 			return ResponseEntity.ok(res);
 		}
 		return ResponseEntity.badRequest().build();
