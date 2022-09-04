@@ -38,7 +38,7 @@ public class Pedido {
 	private Double valorFinal;
 
 	@Column(name = "status")
-	private Integer status;
+	private String status;
 	
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
@@ -92,11 +92,12 @@ public class Pedido {
 		this.valorFinal = valorFinal;
 	}
 
-	public Integer getStatus() {
+	public String getStatus() {
 		return status;
 	}
+	
 
-	public void setStatus(Integer status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	
