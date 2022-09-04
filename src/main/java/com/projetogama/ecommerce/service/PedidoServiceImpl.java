@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projetogama.ecommerce.dao.PedidoDAO;
+import com.projetogama.ecommerce.model.ItemPedido;
 import com.projetogama.ecommerce.model.Pedido;
 
 @Service
@@ -15,6 +16,10 @@ public class PedidoServiceImpl implements IPedidoService{
 	
 	@Override
 	public Pedido inserirNovo(Pedido novo) {
+		//Antes de fazer um SAVE, eu preciso indicar aos "filhos"(itens) a qual pedidos eles pertencem
+		for(ItemPedido item: novo.getItens()) {
+			item.setPedido(novo);
+		}
 		return dao.save(novo);
 	}
 

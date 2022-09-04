@@ -31,7 +31,7 @@ public class PedidoController {
 	@PostMapping("/pedidos")
 	public ResponseEntity<Pedido> inserirNovoPedido(@RequestBody Pedido novo){
 		
-		return null;
+		return ResponseEntity.ok(service.inserirNovo(novo));
 		
 	}
 }
