@@ -1,9 +1,12 @@
 package com.projetogama.ecommerce.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projetogama.ecommerce.dao.PedidoDAO;
+import com.projetogama.ecommerce.dto.FaturamentoMensal;
 import com.projetogama.ecommerce.model.ItemPedido;
 import com.projetogama.ecommerce.model.Pedido;
 
@@ -28,4 +31,8 @@ public class PedidoServiceImpl implements IPedidoService{
 		return dao.findById(numero).orElse(null);
 	}
 
+	@Override
+	public ArrayList<FaturamentoMensal> recuperarFaturamentoMensal(Integer ano) {
+		return dao.recuperarFaturamentoPorAno(ano);
+	}
 }
