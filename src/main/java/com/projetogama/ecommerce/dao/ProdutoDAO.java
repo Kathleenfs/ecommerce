@@ -10,8 +10,8 @@ public interface ProdutoDAO extends CrudRepository<Produto, Integer> {
 
 	//queries
 	
-	public ArrayList<Produto> findByOrderPreco();
-	public ArrayList<Produto> findByOrderPrecoDesc();
-	public ArrayList<Produto> findByOrderNomeContaining(String palavraChave);;
+	//public ArrayList<Produto> findByOrderPreco();
+	//public ArrayList<Produto> findByOrderPrecoDesc();
+	public ArrayList<Produto> findByNomeContaining(String palavraChave);
 
 }

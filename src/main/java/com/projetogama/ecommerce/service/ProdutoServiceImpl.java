@@ -36,6 +36,6 @@ public class ProdutoServiceImpl  implements IProdutoService{
 	@Override
 	public ArrayList<Produto> buscarPorPalavraChave(String palavra) {
 		
-		return dao.findByOrderNomeContaining(palavra);
+		return dao.findByNomeContaining(palavra);
 	}
 }
