@@ -6,8 +6,6 @@ public class FaturamentoMensal {
 	
 	private Double valorTotal;
 
-	
-	
 	public FaturamentoMensal(Integer mes, Double valorTotal) {
 		super();
 		this.mes = mes;
